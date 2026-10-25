@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="dark light">
+  <title>ProPass — Password Strength Analyzer</title>
+  <meta name="description" content="A privacy-first password strength analyzer that runs locally in your browser.">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="ProPass home"><span aria-hidden="true">🔐</span> ProPass</a>
+      <button id="themeToggle" class="secondary" type="button" aria-pressed="false">Switch theme</button>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">PRIVACY-FIRST SECURITY TOOL</p>
+      <h1>Password <span>Strength Analyzer</span></h1>
+      <p>Analyze a password locally in your browser. Your input is not sent to a server by this app.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="inputHeading">
+      <h2 id="inputHeading">Analyze a password</h2>
+      <p class="notice"><strong>Privacy tip:</strong> For best privacy, test a sample password rather than a password you currently use.</p>
+      <label for="passwordInput">Password</label>
+      <div class="input-row">
+        <input id="passwordInput" type="password" autocomplete="new-password" autocapitalize="off"
+               spellcheck="false" maxlength="256" placeholder="Enter a sample password" aria-describedby="privacyNote">
+        <button id="toggleVisibility" class="secondary" type="button" aria-pressed="false">Show</button>
+        <button id="generateBtn" type="button">Generate</button>
+      </div>
+      <p id="privacyNote" class="muted">Processed locally only. Do not paste passwords you use for important accounts.</p>
+      <div class="stats">
+        <div class="stat"><span class="muted">Length</span><strong id="lengthDisplay">0</strong></div>
+        <div class="stat"><span class="muted">Estimated entropy</span><strong><span id="entropyDisplay">0</span> bits</strong></div>
+        <div class="stat"><span class="muted">Character groups</span><strong id="varietyDisplay">0 / 4</strong></div>
+      </div>
+      <div class="meter" aria-hidden="true"><div id="strengthBar"></div></div>
+      <div class="meter-labels"><span>Weak</span><span>Fair</span><span>Strong</span><span>Very strong</span></div>
+      <div class="result" aria-live="polite" aria-atomic="true">
+        <div class="result-heading"><span id="resultIcon" aria-hidden="true">🔎</span><div><h3 id="resultTitle">Ready to analyze</h3><p id="resultSummary">Enter a sample password to see guidance.</p></div></div>
+        <h3>Checks</h3>
+        <ul id="checksList"><li>No password has been analyzed.</li></ul>
+        <h3>Recommendations</h3>
+        <ul id="recommendationsList"><li>Use a long, unique password or passphrase.</li></ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Generate a password</h2>
+      <p class="muted">Generated with the browser's cryptographic random-number generator. Store it in a reputable password manager.</p>
+      <div class="generated">
+        <output id="generatedPassword" class="generated-value" aria-live="polite">Select Generate to create one</output>
+        <button id="copyGenerated" class="secondary" type="button">Copy</button>
+        <button id="refreshGenerated" class="secondary" type="button">New</button>
+      </div>
+      <p id="toast" class="muted" role="status" aria-live="polite"></p>
+    </section>
+
+    <footer>
+      <p>ProPass by Purvesh · Client-side demo · Not a guarantee against password cracking.</p>
+      <p>Strength estimates are simplified and do not represent a real attacker or a verified breach lookup.</p>
+    </footer>
+  </main>
+</body>
+</html>
