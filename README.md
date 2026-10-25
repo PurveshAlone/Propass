@@ -4,7 +4,7 @@ A privacy-focused, browser-based password strength analyzer built with HTML, CSS
 
 ## 🌐 Live Demo
 
-**Visit ProPass:** https://purveshalone.github.io/propass-secure/
+**Visit ProPass:** https://purveshalone.github.io/Propass/
 
 > If the website is not deployed successfully yet, publish it first and then verify this link.
 
